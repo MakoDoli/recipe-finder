@@ -38,24 +38,33 @@ export default function SearchFIlter() {
     router.replace(`${pathname}?${params.toString()}`);
   };
   return (
-    <div className="flex min-h-screen flex-col justify-center items-center gap-5 dark:bg-slate-800">
-      <h1 className="text-red-500 dark:text-green-400"> Recipe finder</h1>
+    <div className="flex  flex-col justify-center items-center gap-5 dark:bg-slate-900 mt-20">
+      <label>Select type</label>
+      <input
+        className="h-10 border w-48 border-amber-700 rounded-md"
+        type="text"
+        onChange={(e) => handleQuery(e.target.value)}
+      />
 
-      <input type="text" onChange={(e) => handleQuery(e.target.value)} />
-
+      <label>Select cooking time</label>
+      <input
+        className="h-10 w-48 border border-amber-700 rounded-md"
+        type="number"
+        onChange={(e) => handleTime(e.target.value)}
+      />
       <select
-        className="w-40 text-green-500"
+        className=" w-48 pl-6 h-10 border border-amber-700 rounded-md"
         onChange={(e) => handleCuisine(e.target.value)}
       >
-        <option value="">Select cuisine</option>
+        <option className="dark:text-amber-700" value="">
+          Select cuisine
+        </option>
         {CUISINES.map((k) => (
-          <option key={k} value={k}>
+          <option key={k} value={k} className="dark:text-amber-700">
             {k}
           </option>
         ))}
       </select>
-      <input type="number" onChange={(e) => handleTime(e.target.value)} />
-
       {searchParams.size === 0 ? (
         <span className="text-gray-500">Next</span>
       ) : (

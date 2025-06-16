@@ -1,1 +1,1 @@
-export const CUISINES = ["Asian", "Italian", "Chinese", "Mexican"];
+export const CUISINES = ["asian", "italian", "chinese", "mexican"];

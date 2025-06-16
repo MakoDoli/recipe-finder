@@ -16,9 +16,9 @@ export default async function RecipeDetails({ params }) {
   }
 
   const recipe = await res.json();
-  console.log(recipe);
+
   return (
-    <div className="flex flex-col justify-center items-center py-10 ">
+    <div className="flex flex-col bg-amber-100 justify-center items-center pt-10 dark:bg-slate-900 min-h-screen ">
       <h1 className="text-2xl font-bold">{recipe.title}</h1>
       <Image
         src={recipe.image}
@@ -31,9 +31,9 @@ export default async function RecipeDetails({ params }) {
         <p>
           <strong>Ingredients:</strong>{" "}
         </p>
-        <div className="flex gap-3 flex-wrap">
-          {recipe.extendedIngredients.map((i) => (
-            <p key={i.name}>{i.name}</p>
+        <div className="flex gap-3 flex-wrap max-w-[750px]  ">
+          {recipe.extendedIngredients.map((i, index) => (
+            <p key={i.name + index}>{i.name}</p>
           ))}
         </div>
 
