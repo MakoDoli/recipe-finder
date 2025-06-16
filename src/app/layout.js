@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Josefin_Sans } from "next/font/google";
+import Link from "next/link";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,6 +28,11 @@ export default function RootLayout({ children }) {
       <body
         className={`${josefin.className} ${geistMono.variable} antialiased bg-amber-100 dark:bg-slate-900 min-h-screen`}
       >
+        <Link href="/">
+          <h1 className="text-2xl pt-10 text-center bg-amber-100 dark:bg-slate-900">
+            Recipe finder 🔎
+          </h1>
+        </Link>
         {children}
       </body>
     </html>

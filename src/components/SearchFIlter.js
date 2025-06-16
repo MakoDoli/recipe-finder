@@ -10,7 +10,6 @@ export default function SearchFIlter() {
   const pathname = usePathname();
 
   const handleQuery = (query) => {
-    console.log(query);
     const params = new URLSearchParams(searchParams);
 
     params.set("query", query);
@@ -22,9 +21,9 @@ export default function SearchFIlter() {
   const handleCuisine = (cuisine) => {
     const params = new URLSearchParams(searchParams);
 
-    params.set("cuisine", cuisine);
+    params.set("cuisines", cuisine);
     if (cuisine === "") {
-      params.delete("cuisine");
+      params.delete("cuisines");
     }
     router.replace(`${pathname}?${params.toString()}`);
   };

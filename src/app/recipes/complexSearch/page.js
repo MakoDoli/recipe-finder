@@ -3,12 +3,12 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default async function RecipesPage({ searchParams }) {
-  const { query = "", cuisine = "", maxReadyTime = "" } = await searchParams;
-
+  const { query = "", cuisines = "", maxReadyTime = "" } = await searchParams;
+  console.log(query, cuisines, maxReadyTime);
   const apiKey = process.env.SPOONACULAR_API_KEY;
-  console.log(cuisine);
+
   const res = await fetch(
-    `${BASE_URL}/complexSearch?query=${query}&cuisine=${cuisine}&maxReadyTime=${Number(
+    `${BASE_URL}/complexSearch?query=${query}&cuisines=${cuisines}&maxReadyTime=${Number(
       maxReadyTime
     )}&apiKey=${apiKey}`,
     {
@@ -17,7 +17,7 @@ export default async function RecipesPage({ searchParams }) {
   );
 
   const data = await res.json();
-
+  if (data.results.length === 0) return <p>No recipes were found 😥 </p>;
   return (
     <div className="dark:bg-slate-900 bg-amber-100 min-h-screen p-10 text-center ">
       <h1 className="font-bold mb-8">Recipes for: {query}</h1>
